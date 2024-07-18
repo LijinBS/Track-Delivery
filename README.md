@@ -2,6 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
+ This project is to mock the role-based access for single table and page
+ 
+ user1: {
+      name: 'Admin',
+      permission: 'all',
+      password: 'Admin',
+    },
+    user2: {
+      name: 'guest',
+      permission: 'none',
+      password: 'guest',
+    },
+  };
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
