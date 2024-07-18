@@ -1,0 +1,31 @@
+@mixin inputStyle {
+    width: 80%;
+    padding-bottom: 20px;
+}
+
+.login-container {
+    width:  400px;
+    height:400px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    &-title {
+        padding-bottom: 20px;
+        font-weight: bold;
+    }
+    &-username {
+        @include inputStyle;
+    }
+    &-password {
+        @include inputStyle;
+    }
+}
+
+.login-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+}

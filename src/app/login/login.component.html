@@ -1,0 +1,28 @@
+<div class="login-group">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+        <div class="login-container">
+            <div class="login-container-title">
+         LOGIN
+        </div>
+        <div class="login-container-username">
+        <input nz-input placeholder="Username"  formControlName="username" />
+        <div class="text-danger"  *ngIf="selectFormControl.username.errors?.required && selectFormControl.username.touched">
+           User Name is Required
+        </div>
+     </div> 
+     <div class="login-container-password">
+         <input type="password" nz-input placeholder="Password"  formControlName="password" />
+         <div class="text-danger"  *ngIf="selectFormControl.password.errors?.required && selectFormControl.password.touched">
+            Password is Required
+         </div>
+        </div>
+    <div class="text-danger" *ngIf="invalidCredentials">
+        Invalid Credentials
+    </div>
+     <div class="login-contatiner-submit">
+         <button type="submit" nz-button nzType="primary" >Submit</button>
+        </div>
+    </div>
+    </form>
+    
+    </div>

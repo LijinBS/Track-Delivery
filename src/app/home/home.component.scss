@@ -1,0 +1,79 @@
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .trigger:hover {
+    color: #1890ff;
+  }
+
+  .navigation {
+      cursor: pointer;
+        list-style-type: none;
+         color: #fff;
+         .is-active {
+             color:rgb(14, 14, 238);
+             font-weight: bold;
+         }
+         li {
+             font-size: 14px;
+             margin-bottom: 20px;
+             .sub-menu {
+                 padding-left: 20px;
+             }
+             &:focus {
+                 outline: none;
+             }
+         }
+  }
+
+  .logo {
+    // height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color:#fff; 
+    margin: 16px;
+  }
+
+  nz-header {
+    background: #fff;
+    padding: 0 24px 0;
+    font-size: 18px;
+    color: rgb(14, 14, 238);
+    font-weight: bold;
+    display:flex;
+    align-items: center;
+    justify-content:space-between
+  }
+
+  nz-content {
+    margin: 0 16px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  nz-breadcrumb {
+    margin: 16px 0;
+  }
+
+  .inner-content {
+    padding: 24px;
+    background: #fff;
+    height: 100%;
+  }
+
+  nz-footer {
+    text-align: center;
+  }
+
+  .main-layout{
+      height: 100%;
+  }
+.capitalize {
+    text-transform: capitalize;
+}
+  

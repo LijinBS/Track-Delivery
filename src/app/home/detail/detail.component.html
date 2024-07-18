@@ -1,0 +1,59 @@
+<div class="detail-container">
+  <div class="detail-container-title">
+    {{ "Add Delivery Detail " +  currentTitle }}
+  </div>
+  <div class="detail-container-content">
+    <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+        <div class="detail-container-content-username" *ngIf="!currentId && currentId !== 0" >
+            <nz-select  class="select" formControlName="username">
+                <nz-option *ngFor="let data of nameList" [nzValue]="data.id" [nzLabel]="data.name"></nz-option>
+
+              </nz-select>
+        </div>
+      <div class="detail-container-content-location">
+        <label class="label">Location</label>
+        <input nz-input placeholder="Basic usage" formControlName="location" />
+        <div
+          class="text-danger"
+          *ngIf="
+            selectFormControl.location.errors?.required &&
+            selectFormControl.location.touched
+          "
+        >
+          Location is Required
+        </div>
+      </div>
+      <div class="detail-container-content-endTime">
+        <label class="label">Delivery Time</label>
+        <nz-time-picker
+          formControlName="deliveryTime"
+          [nzUse12Hours]="true"
+          (ngModelChange)="logTime($event)"
+          nzFormat="h:mm a"
+        ></nz-time-picker>
+        <div
+          class="text-danger"
+          *ngIf="
+            selectFormControl.deliveryTime.errors?.required &&
+            selectFormControl.deliveryTime.touched
+          "
+        >
+          Delivery Time is Required
+        </div>
+      </div>
+      <div class="detail-container-content-comment">
+        <label class="label">Comment</label>
+        <textarea
+          nz-input
+          placeholder="Delivery Comment"
+          formControlName="comment"
+          [nzAutosize]="{ minRows: 3, maxRows: 5 }"
+        ></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="detail-container-footer">
+    <button type="submit" nz-button nzType="primary"  nzShape="round" (click)="onSubmit()">Save</button>
+    <button nz-button nzType="default"  class="cancel" nzShape="round" (click)="onCancel()">Cancel</button>
+  </div>
+</div>

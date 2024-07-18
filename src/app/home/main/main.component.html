@@ -1,0 +1,71 @@
+<div class="main-content">
+  <nz-table
+    #rowSelectionTable
+    [nzFrontPagination]="false"
+    [nzData]="listOfData"
+    [nzScroll]="{ y: '600px' }"
+    (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+  >
+    <thead>
+      <tr>
+        <th
+        *ngIf="roleData?.user?.role === 'all'"
+        nzWidth="60px"
+          [nzChecked]="checked"
+          [nzIndeterminate]="indeterminate"
+          (nzCheckedChange)="onAllChecked($event)"
+        ></th>
+        <th nzWidth="60px"></th>
+        <th>Name</th>
+        <th>User Reference</th>
+        <th>Address</th>
+        <th>Transport Vehicle</th>
+        <th *ngIf="roleData?.user?.role === 'all'">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let data of rowSelectionTable.data">
+        <tr>
+          <td *ngIf="roleData?.user?.role === 'all'"
+            [nzChecked]="setOfCheckedId.has(data.id)"
+            (nzCheckedChange)="onItemChecked(data.id, $event)"
+          ></td>
+          <td
+            [nzExpand]="expandSet.has(data.id)"
+            (nzExpandChange)="onExpandChange(data.id, $event)"
+          ></td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.refId }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.vehicle }}</td>
+          <td *ngIf="roleData?.user?.role === 'all'">
+            <span class="actionLabel" (click)="onEdit(data.id)">Add Delivery</span>
+          </td>
+        </tr>
+        <tr [nzExpand]="expandSet.has(data.id)">
+          <nz-table
+          class="subTable"
+            #basicTable
+            [nzData]="rowSelectionTable.data[data.id]?.subTable || []"
+            [nzFrontPagination]="false"
+          >
+            <thead>
+              <tr>
+                <th>Location</th>
+                <th>Delivery Time</th>
+                <th>Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let subData of basicTable.data">
+                <td>{{ subData.location }}</td>
+                <td>{{ subData.time }}</td>
+                <td>{{ subData.comment }}</td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </tr>
+      </ng-container>
+    </tbody>
+  </nz-table>
+</div>

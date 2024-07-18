@@ -1,0 +1,36 @@
+<nz-layout class="main-layout">
+  <nz-header class="header">
+      <div>
+        Track Delivery
+      </div>
+      <button nz-button nzType="primary" nzDanger nzShape="round" (click)="logout()">Logout</button>
+    </nz-header>
+  <nz-layout class="main-layout">
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+      <div class="logo">
+        <i
+          class="trigger"
+          nz-icon
+          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          (click)="isCollapsed = !isCollapsed"
+        ></i>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="inline" class="navigation">
+        <li nz-menu-item routerLink="main"  routerLinkActive="is-active">
+          <i nz-icon nzType="home"></i>
+          <span *ngIf="!isCollapsed" class="sub-menu">Main</span>
+        </li>
+        <li *ngIf="roleData?.user?.role === 'all'" nz-menu-item routerLink="detail" routerLinkActive="is-active">
+          <i nz-icon nzType="form"></i>
+          <span class="sub-menu" *ngIf="!isCollapsed">Detail</span>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-content>
+      <nz-breadcrumb >
+        <nz-breadcrumb-item class="capitalize" *ngFor="let nav of breadcrumbArray" >{{ nav}}</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div class="inner-content"><router-outlet></router-outlet></div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
